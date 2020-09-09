@@ -36,4 +36,4 @@ py manage.py migrate
 py manage.py runserver
 ```
 
-进入http://127.0.0.1:8000/bank/即可开始运行。
+进入http://127.0.0.1:8000/bank/ 即可开始运行。
