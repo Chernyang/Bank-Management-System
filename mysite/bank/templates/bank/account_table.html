@@ -1,0 +1,47 @@
+{% extends "bank/base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+<div class="panel panel-default" style="margin: 10px">
+    <div class="panel-heading">
+        <h3>这是所查询帐户的信息：</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>accountid</th>
+                        <th>money</th>
+                        <th>settime</th>
+                        <th>accounttype</th>
+                        <th>customer</th>
+                        <th>bank</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for acc in accList %}
+                    <tr>
+                        <th>{{ acc.accountid }}</th>
+                        <th>{{ acc.money }}</th>
+                        <th>{{ acc.settime }}</th>
+                        <th>{{ acc.accounttype }}</th>
+                        <th>
+                            {% for cus in acc.customer.all %}
+                            {{ cus.cusname}}
+                            {% endfor %}
+                        </th>
+                        <th>{{ acc.bank.bankname }}</th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{% url 'bank:account_query' %}" class="layui-btn">再次查询</a>
+    </div>
+</div>
+
+{% endblock content %}

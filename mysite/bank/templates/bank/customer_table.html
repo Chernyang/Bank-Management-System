@@ -1,0 +1,57 @@
+{% extends "bank/base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+<div class="panel panel-default" style="margin: 10px">
+    <div class="panel-heading">
+        <h3 style="display:inline-block;">这是所查询客户的信息：</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover ">
+                <thead>
+                    <tr>
+                        <th>cusid</th>
+                        <th>cusname</th>
+                        <th>cusphone</th>
+                        <th>address</th>
+                        <th>contact_name</th>
+                        <th>contact_phone</th>
+                        <th>contact_email</th>
+                        <th>relation</th>
+                        <th>loanres</th>
+                        <th>accres</th>
+                        <th>account</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    {% for cus in cusList %}
+                    <tr>
+                        <th>{{ cus.cusid }}</th>
+                        <th>{{ cus.cusname }}</th>
+                        <th>{{ cus.cusphone }}</th>
+                        <th>{{ cus.address }}</th>
+                        <th>{{ cus.contact_name }}</th>
+                        <th>{{ cus.contact_phone }}</th>
+                        <th>{{ cus.contact_email }}</th>
+                        <th>{{ cus.relation }}</th>
+                        <th>{{ cus.loanres.empname }}</th>
+                        <th>{{ cus.accres.empname }}</th>
+                        <th>
+                            {% for acc in cus.account.all %}
+                                {{ acc.accountid }}
+                            {% endfor %}
+                        </th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{% url 'bank:customer_query' %}" class="layui-btn">再次查询</a>
+    </div>
+</div>
+
+{% endblock content %}

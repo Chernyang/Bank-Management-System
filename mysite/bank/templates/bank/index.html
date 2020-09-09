@@ -1,0 +1,58 @@
+{% extends "bank/base.html" %}
+
+{% block content %}
+<div style="padding: 20px;">
+    <div class="layui-row layui-col-space15">
+
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header" style="color: #009688; font-size: x-large; text-align: center;">欢迎来到起司银行管理系统</div>
+                <div class="layui-card-body">
+                    <p>在这里，您能完成客户管理、账户管理、贷款管理和业务统计等操作。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md6">
+            <div class="layui-card">
+                <div class="layui-card-header" style="color: #009688">客户管理</div>
+                <div class="layui-card-body">
+                    提供客户所有信息的增、删、改、查功能。<br>
+                    如果客户存在着关联账户或者贷款记录，则不允许删除。
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md6">
+            <div class="layui-card">
+                <div class="layui-card-header" style="color: #009688">账户管理</div>
+                <div class="layui-card-body">
+                    提供账户开户、销户、修改、查询功能，包括储蓄账户和支票账户。<br>
+                    账户号不允许修改。
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md6">
+            <div class="layui-card">
+                <div class="layui-card-header" style="color: #009688">贷款管理</div>
+                <div class="layui-card-body">
+                    提供贷款信息的增、删、查功能，提供贷款发放功能。<br>
+                    贷款信息一旦添加成功后不允许修改。<br>
+                    要求能查询每笔贷款的当前状态。（未开始发放、发放中、已全部发放）<br>
+                    处于发放中状态的贷款记录不允许删除。
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md6">
+            <div class="layui-card">
+                <div class="layui-card-header" style="color: #009688">业务统计</div>
+                <div class="layui-card-body">
+                    按业务分类（储蓄、 贷款）和时间（月、 季、 年）统计各个支行的业务总金额和用户数。<br>
+                    要求对统计结果同时提供表格和曲线图两种可视化展示方式。<br>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

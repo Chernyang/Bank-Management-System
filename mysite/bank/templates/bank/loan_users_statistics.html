@@ -1,0 +1,122 @@
+{% extends "bank/base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+<div class="panel panel-default" style="margin: 10px">
+    <div class="panel-heading">
+        <h3 style="display:inline-block;">这里是各支行贷款业务用户数统计：</h3>
+    </div>
+    <div class="panel-body">
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">按月统计表格</li>
+                <li>按月统计曲线图</li>
+                <li>按季统计表格</li>
+                <li>按季统计曲线图</li>
+                <li>按年统计表格</li>
+                <li>按年统计曲线图</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>time / month</th>
+                                    <th>Beijing Bank</th>
+                                    <th>Shanghai Bank</th>
+                                    <th>Shenzhen Bank</th>
+                                </tr>
+                            </thead>
+            
+                            <tbody>
+                                {% for month in month_list %}
+                                <tr>
+                                    <th>{{ month.time }}</th>
+                                    <th>{{ month.beijing }}</th>
+                                    <th>{{ month.shanghai }}</th>
+                                    <th>{{ month.shenzhen }}</th>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="layui-tab-item">
+                    <img src="/static/pic/loan_month_users.png" alt="业务统计"  height="50%" width="100%" />
+                </div>
+                <div class="layui-tab-item">
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>time / season</th>
+                                    <th>Beijing Bank</th>
+                                    <th>Shanghai Bank</th>
+                                    <th>Shenzhen Bank</th>
+                                </tr>
+                            </thead>
+            
+                            <tbody>
+                                {% for season in season_list %}
+                                <tr>
+                                    <th>{{ season.time }}</th>
+                                    <th>{{ season.beijing }}</th>
+                                    <th>{{ season.shanghai }}</th>
+                                    <th>{{ season.shenzhen }}</th>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="layui-tab-item">
+                    <img src="/static/pic/loan_season_users.png" alt="业务统计"  height="50%" width="100%" />
+                </div>
+                <div class="layui-tab-item">
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>time / year</th>
+                                    <th>Beijing Bank</th>
+                                    <th>Shanghai Bank</th>
+                                    <th>Shenzhen Bank</th>
+                                </tr>
+                            </thead>
+            
+                            <tbody>
+                                {% for year in year_list %}
+                                <tr>
+                                    <th>{{ year.time }}</th>
+                                    <th>{{ year.beijing }}</th>
+                                    <th>{{ year.shanghai }}</th>
+                                    <th>{{ year.shenzhen }}</th>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="layui-tab-item">
+                    <img src="/static/pic/loan_year_users.png" alt="业务统计" height="50%" width="100%" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+    });
+</script>
+
+{% endblock content %}

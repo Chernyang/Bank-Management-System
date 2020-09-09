@@ -1,0 +1,47 @@
+{% extends "bank/base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+<div class="panel panel-default" style="margin: 10px">
+    <div class="panel-heading">
+        <h3>这是所查询贷款的信息：</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>loanid</th>
+                        <th>money</th>
+                        <th>bank</th>
+                        <th>settime</th>
+                        <th>state</th>
+                        <th>customer</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for loan in loanList %}
+                    <tr>
+                        <th>{{ loan.loanid }}</th>
+                        <th>{{ loan.money }}</th>
+                        <th>{{ loan.bank.bankname }}</th>
+                        <th>{{ loan.settime }}</th>
+                        <th>{{ loan.state }}</th>
+                        <th>
+                            {% for cus in loan.loanforcus.all %}
+                            {{ cus.cusname}}
+                            {% endfor %}
+                        </th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{% url 'bank:loan_query' %}" class="layui-btn">再次查询</a>
+    </div>
+</div>
+
+{% endblock content %}

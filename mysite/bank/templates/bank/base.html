@@ -1,0 +1,92 @@
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>起司银行</title>
+    {% load static %}
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="icon" href="/static/pic/qisi.ico" type="image/x-icon">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <a href="{% url 'bank:index' %}" class="layui-logo">起司银行管理系统</a>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;"  lay-shrink="all">
+                    <li class="layui-nav-item">
+                        <a>客户管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="{% url 'bank:add_customer' %}">客户注册</a></dd>
+                            <dd><a href="{% url 'bank:delete_customer' %}">客户删除</a></dd>
+                            <dd><a href="{% url 'bank:change_customer_id' %}">修改客户信息</a></dd>
+                            <dd><a href="{% url 'bank:customer_query' %}">查询客户信息</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a>账户管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="{% url 'bank:add_account' %}">开设账户</a></dd>
+                            <dd><a href="{% url 'bank:delete_account' %}">销毁账户</a></dd>
+                            <dd><a href="{% url 'bank:change_account_id' %}">修改账户信息</a></dd>
+                            <dd><a href="{% url 'bank:account_query' %}">查询账户信息</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a>贷款管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="{% url 'bank:add_loan' %}">增加贷款</a></dd>
+                            <dd><a href="{% url 'bank:delete_loan' %}">删除贷款</a></dd>
+                            <dd><a href="{% url 'bank:issue_loan' %}">发放贷款</a></dd>
+                            <dd><a href="{% url 'bank:loan_query' %}">查询贷款信息</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a>业务统计</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="{% url 'bank:save_money_statistics' %}">储蓄业务总金额</a></dd>
+                            <dd><a href="{% url 'bank:save_users_statistics' %}">储蓄业务用户数</a></dd>
+                            <dd><a href="{% url 'bank:loan_money_statistics' %}">贷款业务总金额</a></dd>
+                            <dd><a href="{% url 'bank:loan_users_statistics' %}">贷款业务用户数</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body" style="background-color: #F2F2F2;">
+            <!-- 内容主体区域 -->
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © 2020 Chern
+            <img src="/static/pic/qisi.ico"  alt="起司" height='20' width="20"/>
+        </div>
+    </div>
+
+    {% load static %}
+    <script src="/static/layui/layui.js" charset="utf-8"></script>
+    <script>
+        layui.use('element', function () {
+            var element = layui.element;
+            //监听导航点击
+            element.on('nav(demo)', function (elem) {
+            });
+        });
+    </script>
+</body>
+
+</html>
